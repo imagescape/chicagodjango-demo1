@@ -1,3 +1,8 @@
+"""
+This codebase is meant to be used in conjunction with 
+an Imiginary Landscape Blog post regarding Admin Hacks. 
+Please see www.chicagodjango.com for more info. 
+"""
 from django.contrib import admin 
 from django.contrib.auth.models import User 
 from django.contrib.auth.admin import UserAdmin
@@ -24,9 +29,14 @@ class PostAdminForm(forms.ModelForm):
 class PostAdmin(admin.ModelAdmin):
 
     list_display = ['title','type','preformed_by',]
+
+    # See Section 1.1
     readonly_fields=['created', 'modified', 'preformed_by', 'ipaddress', ]
+
+    # See Section 8
     form = PostAdminForm
 
+    # See Section 6
     fieldsets = []
   
     def __init__(self, model, admin_site):
@@ -53,6 +63,7 @@ class PostAdmin(admin.ModelAdmin):
         super(PostAdmin, self).__init__(model, admin_site)
 
 
+    # See Section 1.2
     def get_readonly_fields(self, request, obj = None):
         if obj: 
             if not (request.user.is_staff or request.user.is_superuser):
@@ -61,8 +72,10 @@ class PostAdmin(admin.ModelAdmin):
         else:
             return self.readonly_fields
 
+    # See Section 2.1
     admin_actions = None
 
+    # See Section 2.2
     def get_actions(self, request):
         actions = super(PostAdmin, self).get_actions(request)
         try:
@@ -71,6 +84,7 @@ class PostAdmin(admin.ModelAdmin):
             pass 
         return actions
 
+    # See Section 3
     def has_delete_permission(self, request, obj=None):
         return_value = False
         user = request.user
@@ -86,13 +100,17 @@ class PostAdmin(admin.ModelAdmin):
         return return_value 
 
 
+    # See Section 4
     def save_model(self, request, obj, form, change):
         obj.preformed_by = request.user
         obj.ipaddress = utils.get_client_ip(request)
         obj.save()
 
+
+    # See Section 5.1 
     filter_horizontal = ('category',)
 
+    # See Section 5.2
     raw_id_fields = ("tags",)
 
 
@@ -102,6 +120,7 @@ admin.site.register(models.Post, PostAdmin)
 
 ##################################################################################
 
+# See Section 7 
 class PostInline(admin.TabularInline):
     model = models.Post
     extra = 0
