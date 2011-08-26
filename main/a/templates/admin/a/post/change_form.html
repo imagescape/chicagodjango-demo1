@@ -16,10 +16,10 @@
 
 <div class="module aligned">
  <div class="item heading">Post Categories</div>
-  {% for category in original.postcategory_set.all %}
+  {% for category in original.category.all %}
   <div class="item">
-    <span class="item_name">{{ name }}</span>
-    <span class="item_edit"><a href="{% url admin:flowershop_orderitem_change item.id %}" target="_blank">Edit</a></span>
+    <span class="item_name">{{ category.name }}</span>
+    <span class="item_edit"><a href="{% url admin:a_postcategory_change category.id %}" target="_blank">Edit</a></span>
   </div>
   {% empty %}
   <div class="item">No Categories</div>
