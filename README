@@ -1,2 +1,29 @@
-# this example requires 
-django==1.3
+
+SETUP 
+
+0) If you don't have it installed already, please install the python-virtualenv package.  
+In Ubuntu, execute the following on a command prompt: 
+aptitude install python-virtualenv
+
+1) Create and activate a new virtualenv
+
+mkdir chidjango1
+cd chidjango1
+virtualenv --no-site-packages .
+. ./bin/activate
+
+2) Install the requirements 
+pip install django==1.3
+
+3) "Git" the demo Django application
+git clone git://github.com/imagescape/chicagodjango-demo1.git demo1
+
+4) Sync the database for the demo app
+cd demo1/main/
+./manage.py syncdb 
+
+5) Run the application server
+./manage runserver
+
+
+
