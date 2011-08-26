@@ -21,12 +21,14 @@ pip install django==1.3
 3) "Git" the demo Django application
 git clone git://github.com/imagescape/chicagodjango-demo1.git demo1
 
-4) Sync the database for the demo app
+4) Sync the database for the demo app.  Create an admin user/password when prompted. 
 cd demo1/main/
 ./manage.py syncdb 
 
 5) Run the application server
 ./manage runserver
 
+6) In a web browser, visit: 
+http://localhost:8000/admin/
 
 
