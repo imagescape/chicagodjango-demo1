@@ -1,34 +1,6 @@
-NOTE
-This is just a demo application for the purpose of demonstrating some of Django's Admin customzations.  
-Please see http://www.chicagodjango.com/blog/ for the associated article. 
+This project has moved. 
 
-SETUP 
+Please visit the new location at:
 
-0) If you don't have it installed already, please install the python-virtualenv package.  
-In Ubuntu, execute the following on a command prompt: 
-aptitude install python-virtualenv
-
-1) Create and activate a new virtualenv
-
-mkdir chidjango1
-cd chidjango1
-virtualenv --no-site-packages .
-. ./bin/activate
-
-2) Install the requirements 
-pip install django==1.3
-
-3) "Git" the demo Django application
-git clone git://github.com/imagescape/chicagodjango-demo1.git demo1
-
-4) Sync the database for the demo app.  Create an admin user/password when prompted. 
-cd demo1/main/
-./manage.py syncdb 
-
-5) Run the application server
-./manage runserver
-
-6) In a web browser, visit: 
-http://localhost:8000/admin/
-
+https://github.com/ImaginaryLandscape/chicagodjango-demo1
 
